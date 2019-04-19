@@ -61,3 +61,10 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
         <mapper class="top.show.dao.UserDao"/>
 </mappers>
 ```
+* 第四种在sql语句上做映射
+```xml
+<select id="getAllUsers" resultType="top.show.entity.User">
+        select user_id as userId, user_name as username, user_password as password
+        from user
+</select>
+```

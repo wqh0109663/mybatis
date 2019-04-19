@@ -9,9 +9,13 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
     </resultMap>
-    <select id="getUser" resultMap="UserResultMap" >
+    <select id="getUser" resultMap="UserResultMap">
         select *
         from user
         where user_id = #{id}
+    </select>
+    <select id="getAllUsers" resultType="top.show.entity.User">
+        select user_id as userId, user_name as username, user_password as password
+        from user
     </select>
 </mapper>

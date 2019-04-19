@@ -10,6 +10,7 @@ import top.show.entity.User;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author 吴启欢
@@ -27,6 +28,20 @@ public class UserDaoTest {
         User user = mapper.getUser(1L);
         sqlSession.close();
         Assert.assertNotNull(user);
+    }
+
+
+    @Test
+    public void testGetAllUser() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        List<User> allUsers = mapper.getAllUsers();
+        System.out.println(allUsers);
+        sqlSession.close();
+        Assert.assertNotNull(allUsers);
     }
 
 

@@ -3,6 +3,8 @@ package top.show.dao;
 import org.apache.ibatis.annotations.Param;
 import top.show.entity.User;
 
+import java.util.List;
+
 /**
  * @author 吴启欢
  * @version 1.0
@@ -24,5 +26,11 @@ public interface UserDao {
 //            @Result(property = "username", column = "username")
 //    })
     User getUser(@Param("id") Long id);
+
+    /**
+     * 获取所有用户
+     * @return 用户集合
+     */
+    List<User> getAllUsers();
 
 }
